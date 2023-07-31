@@ -14,10 +14,8 @@ WORKDIR /app
 
 COPY --from=build /app/api ./
 
-EXPOSE 8000
-
 CMD [ "./api" ]
 
 # commands
-## docker build --tag go1 .
-## docker run -d -p "8000:8000" --name rungo go1
+## docker build --tag mascalmeida/fullcycle .
+## docker run mascalmeida/fullcycle
