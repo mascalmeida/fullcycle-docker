@@ -5,6 +5,10 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-EXPOSE 3000
+RUN apt-get update \
+    && npm init -y \
+    && npm install express -y
+
+EXPOSE 5000
 
 CMD ["node", "index.js"]
