@@ -3,12 +3,14 @@ FROM node:18
 
 WORKDIR /usr/src/app
 
+RUN apt-get update && apt-get install -y wget
+
 COPY . .
 
-RUN apt-get update \
-    && npm init -y \
-    && npm install express -y
+RUN npm init -y && npm install express -y
 
-EXPOSE 5000
+RUN npm install
+
+EXPOSE 5000 
 
 CMD ["node", "index.js"]
