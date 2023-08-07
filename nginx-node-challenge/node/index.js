@@ -1,7 +1,24 @@
 // index.js
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
+const port = 3000
+const config = {
+    host: 'db',
+    user: 'root',
+    password: 'root',
+    database: 'nodedb'
+};
+const mysql = require('mysql')
+const connection = mysql.createConnection(config)
+
+const sql = `INSERT INTO people(name) values('mascalmeida')`
+connection.query(sql)
+connection.end()
+
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+    res.send('<h1>@mascalmeida</h1>')
 })
-app.listen(5000, () => console.log('Server is up and running'));
+
+app.listen(port, ()=> {
+    console.log('running in port ' + port)
+})
